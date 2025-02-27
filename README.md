@@ -88,11 +88,13 @@ s.connect(('localhost',8000))
 print(s.getsockname())
 print(s.recv(1024).decode())
 s.send("acknowledgement recived from the server".
+
+~~~
+
 ## OUTPUT:
-##CLIENT
-![Screenshot (29)](https://github.com/user-attachments/assets/ba8803fa-b6fe-4f52-8305-43f62117114d)
-##SERVER
-![Screenshot (30)](https://github.com/user-attachments/assets/8b9eb576-f56c-4b9c-84c1-e8a7716fecfa)
+![Screenshot (29)](https://github.com/user-attachments/assets/a8a3ad22-faac-404c-80d8-7e9a1f957ac8)
+
+![Screenshot (30)](https://github.com/user-attachments/assets/408a51a0-8558-43f2-a4a8-2d3683cddac8)
 
 
 ## Result:
