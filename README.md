@@ -87,13 +87,12 @@ s=socket.socket()
 s.connect(('localhost',8000))
 print(s.getsockname())
 print(s.recv(1024).decode())
-s.send("acknowledgement recived from the server".encode())
-~~~
+s.send("acknowledgement recived from the server".
 ## OUTPUT:
-![EXP1 ](https://github.com/user-attachments/assets/4b09f9c0-0fdc-4671-be01-5dbe59858d53)
-
-
-
+##CLIENT
+![Screenshot (29)](https://github.com/user-attachments/assets/ba8803fa-b6fe-4f52-8305-43f62117114d)
+##SERVER
+![Screenshot (30)](https://github.com/user-attachments/assets/8b9eb576-f56c-4b9c-84c1-e8a7716fecfa)
 
 
 ## Result:
