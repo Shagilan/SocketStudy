@@ -3,7 +3,6 @@ Name:SHAGILAN
 REG.NO:212224040313			
 
                                                                   Study of Socket Programming
-
 ## Aim: 
 To perform a study on Socket Programming
 ## Introduction:
@@ -61,68 +60,38 @@ Socket programming finds applications in various domains, including web developm
 3.	File Transfer Protocol: Protocols like FTP (File Transfer Protocol) utilize socket programming for transferring files between a client and a server.
 4.	Networked Games: Online multiplayer games rely on socket programming to facilitate communication between game clients and servers.
 5.	RPC mechanisms: which allow processes to execute code on a remote server, often use socket programming for communication.
-## CLIENT:
-```python
+
+
+
+## Client.py
+~~~
 import socket
+from datetime import datetime
+s=socket.socket()
+s.bind(('localhost',8000))
+s.listen(5)
+c,addr=s.accept()
+print("Client Address : ",addr)
+now = datetime.now()
+c.send(now.strftime("%d/%m/%Y %H:%M:%S").encode())
+ack=c.recv(1024).decode()
+if ack:
+ print(ack)
+c.close()
+~~~
 
-# Create a socket object
-client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-
-# Connect to the server
-client_socket.connect(('localhost', 8000))
-
-# Print the client's socket name
-print(f"Client connected from: {client_socket.getsockname()}")
-
-# Receive a message from the server
-server_message = client_socket.recv(1024).decode()
-print(f"Received from server: {server_message}")
-
-# Send a message to the server
-client_socket.send("Acknowledgement received from the client.".encode())
-
-# Close the connection
-client_socket.close()
-
-```
-## SERVER:
-```python
+## server.py
+~~~
 import socket
-
-# Create a socket object
-server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-
-# Bind the socket to the host and port
-server_socket.bind(('localhost', 8000))
-
-# Listen for incoming connections (max 1 connection)
-server_socket.listen(1)
-print("Server is waiting for a connection...")
-
-# Accept the connection
-conn, addr = server_socket.accept()
-print(f"Connected by {addr}")
-
-# Send a message to the client
-conn.send("Hello from the server!".encode())
-
-# Receive a message from the client
-data = conn.recv(1024)
-print(f"Received from client: {data.decode()}")
-
-# Close the connection
-conn.close()
-server_socket.close()
-
-```
-
+s=socket.socket()
+s.connect(('localhost',8000))
+print(s.getsockname())
+print(s.recv(1024).decode())
+s.send("acknowledgement recived from the server".encode())
+~~~
 ## OUTPUT:
-![Screenshot (29)](https://github.com/user-attachments/assets/39d97b9a-c0cb-4d32-a8fd-ce97bed0957a)
+![EXP1 ](https://github.com/user-attachments/assets/4b09f9c0-0fdc-4671-be01-5dbe59858d53)
 
-
-
-### SERVER:
-![image-1](https://github.com/user-attachments/assets/b7d457ba-8f9c-43c3-84c7-1b7f6eecd1b0)
 
 
 
